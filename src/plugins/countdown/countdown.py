@@ -1,10 +1,11 @@
+from plugins.base_plugin.base_plugin import BasePlugin
+from utils.app_utils import resolve_path, get_font
+from PIL import Image, ImageDraw, ImageFont
+from utils.image_utils import resize_image
 from datetime import datetime
 import logging
-from plugins.base_plugin.base_plugin import BasePlugin
-from utils.image_utils import resize_image
-from PIL import Image, ImageDraw
-#import textwrap
-#import os
+import textwrap
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -45,15 +46,15 @@ class Countdown(BasePlugin):
         if not frame or frame not in [frame['name'] for frame in FRAME_STYLES]:
             frame = "None"
 
-        event_date = settings.get('eventDate')
-        if not event_date:
+        event_date = settings.get('eventDate', '')
+        if not event_date.strip():
             raise RuntimeError("Event Date is required.")
 
         try:
             days = Countdown.count_days(event_name, event_date)
         except Exception as e:
-            logger.error(f"Failed to get days countdown: {str(e)}")
-            raise RuntimeError("Countdown failure, please check logs.")
+            logger.error(f"Failed to get text_prompt: {str(e)}")
+            raise RuntimeError("Prompt failure, please check logs.")
 
         background_color = settings.get('backgroundColor', "white")
         background_image = settings.get('backgroundImageFile')
@@ -81,6 +82,7 @@ class Countdown(BasePlugin):
 
     @staticmethod
     def count_days(eventName, eventDate):
+        dt = datetime
         now = datetime.now()
         date_of_event = datetime.strptime(eventDate, "%Y-%m-%d")
         days_until = date_of_event - datetime(year=now.year, month=now.month, day=now.day)
