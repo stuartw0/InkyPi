@@ -23,7 +23,7 @@
     {
         "display_name": "Event Countdown",
         "id": "countdown",
-        "class": "Coutdown"
+        "class": "Countdown"
     },
     {
         "display_name": "Clock",
