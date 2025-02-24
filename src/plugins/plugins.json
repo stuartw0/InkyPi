@@ -15,6 +15,11 @@
         "class": "ImageUpload"
     },
     {
+        "display_name": "Christmas Countdown",
+        "id": "christmas",
+        "class": "Christmas"
+    },
+    {
         "display_name": "Today's Newspaper",
         "id": "newspaper",
         "class": "Newspaper",
