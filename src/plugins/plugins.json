@@ -21,6 +21,11 @@
         "image_settings": ["keep-width"]
     },
     {
+        "display_name": "Christmas Countdown",
+        "id": "christmas",
+        "class": "Christmas"
+    },
+    {
         "display_name": "Clock",
         "id": "clock",
         "class": "Clock"
