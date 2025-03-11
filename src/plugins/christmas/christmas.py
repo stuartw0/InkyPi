@@ -57,7 +57,6 @@ class Christmas(BasePlugin):
         padding = max(dim*0.05, 1)
         text_font_size = int(dim*0.088)
         text_font = get_font("Jost", text_font_size, font_weight="bold")
-        #text_font = get_font("jost-semibold", text_font_size)
         y = h-(2*padding)
         x = w/2
 
